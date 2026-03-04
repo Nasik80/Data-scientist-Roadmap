@@ -1,0 +1,2288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Data Science Roadmap — India</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0d0d0d;
+    --bg: #f5f0e8;
+    --accent: #c0392b;
+    --accent2: #e67e22;
+    --accent3: #1a5276;
+    --accent4: #1e8449;
+    --muted: #7f8c8d;
+    --card: #fffdf8;
+    --border: #d5c9b0;
+    --tag-bg: #0d0d0d;
+    --tag-text: #f5f0e8;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  /* HERO */
+  .hero {
+    background: var(--ink);
+    color: var(--bg);
+    padding: 80px 60px 60px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: 'DATA\ASCIENCE';
+    position: absolute;
+    font-family: 'Playfair Display', serif;
+    font-size: 22vw;
+    font-weight: 900;
+    color: rgba(255,255,255,0.03);
+    top: -20px;
+    left: -20px;
+    line-height: 1;
+    pointer-events: none;
+    white-space: pre;
+  }
+  .hero-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .hero-label::before { content: '▶'; }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(36px, 6vw, 80px);
+    font-weight: 900;
+    line-height: 1.05;
+    margin-bottom: 24px;
+    max-width: 800px;
+  }
+  .hero h1 span { color: var(--accent2); }
+  .hero-meta {
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+    margin-top: 40px;
+    padding-top: 32px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+  }
+  .hero-stat { display: flex; flex-direction: column; gap: 4px; }
+  .hero-stat .val {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--accent2);
+  }
+  .hero-stat .lbl {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    color: #aaa;
+    text-transform: uppercase;
+  }
+
+  /* LAYOUT */
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 40px; }
+
+  /* SECTION HEADER */
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 4vw, 44px);
+    font-weight: 700;
+    line-height: 1.15;
+    margin-bottom: 48px;
+  }
+
+  /* OVERVIEW STRIP */
+  .overview {
+    background: var(--accent);
+    color: white;
+    padding: 40px 60px;
+    display: flex;
+    gap: 48px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .overview p {
+    flex: 1;
+    min-width: 280px;
+    font-size: 16px;
+    line-height: 1.8;
+    font-weight: 300;
+  }
+  .overview-badges {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-width: 200px;
+  }
+  .badge {
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 4px;
+    padding: 8px 16px;
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+  }
+
+  /* PHASES */
+  .phases { padding: 80px 0; }
+  .phase {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 0;
+    margin-bottom: 64px;
+    position: relative;
+  }
+  .phase::after {
+    content: '';
+    position: absolute;
+    left: 39px;
+    top: 80px;
+    bottom: -24px;
+    width: 2px;
+    background: var(--border);
+  }
+  .phase:last-child::after { display: none; }
+  .phase-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 48px;
+    font-weight: 900;
+    color: var(--border);
+    line-height: 1;
+    padding-top: 8px;
+    position: relative;
+    z-index: 1;
+  }
+  .phase-content {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    padding: 36px 40px;
+    position: relative;
+  }
+  .phase-content::before {
+    content: '';
+    position: absolute;
+    left: -8px;
+    top: 20px;
+    width: 16px;
+    height: 16px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-right: none;
+    border-top: none;
+    transform: rotate(45deg);
+  }
+  .phase-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border);
+  }
+  .phase-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+  }
+  .phase-meta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 6px;
+    flex-shrink: 0;
+  }
+  .time-tag {
+    background: var(--ink);
+    color: var(--bg);
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    padding: 5px 12px;
+    border-radius: 2px;
+    white-space: nowrap;
+  }
+  .hours-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--accent);
+    font-weight: 500;
+  }
+  .phase-desc {
+    color: var(--muted);
+    font-size: 14px;
+    margin-bottom: 28px;
+    font-style: italic;
+  }
+
+  /* TOPIC GRID */
+  .topics { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; margin-bottom: 24px; }
+  .topic-card {
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    padding: 20px;
+    background: var(--bg);
+    position: relative;
+  }
+  .topic-card-accent {
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px; height: 100%;
+    border-radius: 2px 0 0 2px;
+  }
+  .topic-card h4 {
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    padding-left: 12px;
+    letter-spacing: 0.02em;
+  }
+  .topic-card ul {
+    list-style: none;
+    padding-left: 12px;
+  }
+  .topic-card ul li {
+    font-size: 12.5px;
+    color: #444;
+    padding: 2.5px 0;
+    padding-left: 14px;
+    position: relative;
+  }
+  .topic-card ul li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--border);
+    font-size: 10px;
+  }
+
+  /* RESOURCES */
+  .resources {
+    background: var(--ink);
+    color: var(--bg);
+    border-radius: 2px;
+    padding: 20px 24px;
+    margin-top: 20px;
+  }
+  .resources h4 {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent2);
+    margin-bottom: 12px;
+  }
+  .resource-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .resource-chip {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 2px;
+    padding: 4px 10px;
+    font-size: 11.5px;
+    font-family: 'DM Mono', monospace;
+  }
+
+  /* DAILY SCHEDULE */
+  .schedule { background: var(--ink); color: var(--bg); padding: 80px 0; }
+  .schedule .container { }
+  .schedule .section-title { color: var(--bg); }
+  .schedule .section-label { color: #666; }
+  .schedule-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2px; margin-top: 8px; }
+  .schedule-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.07);
+    padding: 28px 24px;
+    position: relative;
+  }
+  .sch-time {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--accent2);
+    letter-spacing: 0.15em;
+    margin-bottom: 10px;
+  }
+  .sch-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .sch-desc { font-size: 13px; color: #aaa; line-height: 1.6; }
+
+  /* TOOLS */
+  .tools-section { padding: 80px 0; background: var(--card); }
+  .tools-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
+  .tool-item {
+    border: 1px solid var(--border);
+    padding: 16px 20px;
+    background: var(--bg);
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .tool-name { font-weight: 600; font-size: 14px; }
+  .tool-cat { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; }
+
+  /* CERTIFICATIONS */
+  .certs-section { padding: 80px 0; }
+  .certs-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
+  .cert-card {
+    border: 1px solid var(--border);
+    padding: 24px;
+    background: var(--card);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .cert-level {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 2px;
+    display: inline-block;
+    width: fit-content;
+  }
+  .level-beginner { background: #eafaf1; color: #1e8449; }
+  .level-intermediate { background: #fef9e7; color: #b7950b; }
+  .level-advanced { background: #fdedec; color: var(--accent); }
+  .cert-name { font-weight: 600; font-size: 14px; }
+  .cert-body { font-size: 12px; color: var(--muted); }
+
+  /* SALARY */
+  .salary-section { background: var(--accent3); color: white; padding: 80px 0; }
+  .salary-section .section-title { color: white; }
+  .salary-section .section-label { color: rgba(255,255,255,0.5); }
+  .salary-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2px; }
+  .salary-card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 32px 28px;
+  }
+  .salary-role { font-size: 13px; color: rgba(255,255,255,0.6); margin-bottom: 8px; }
+  .salary-range {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--accent2);
+    margin-bottom: 6px;
+  }
+  .salary-exp { font-family: 'DM Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.4); letter-spacing: 0.1em; }
+
+  /* TIPS */
+  .tips-section { padding: 80px 0; }
+  .tips-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+  .tip-card {
+    border-left: 3px solid var(--accent);
+    padding: 20px 24px;
+    background: var(--card);
+    border-top: 1px solid var(--border);
+    border-right: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .tip-num { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--accent); margin-bottom: 8px; letter-spacing: 0.2em; }
+  .tip-title { font-weight: 600; font-size: 14px; margin-bottom: 8px; }
+  .tip-text { font-size: 13px; color: #555; line-height: 1.7; }
+
+  /* FOOTER */
+  footer {
+    background: var(--ink);
+    color: rgba(255,255,255,0.3);
+    padding: 40px 60px;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-align: center;
+  }
+
+  .divider { width: 48px; height: 2px; background: var(--accent); margin: 0 0 24px; }
+  .phase-color-1 .topic-card-accent { background: var(--accent); }
+  .phase-color-2 .topic-card-accent { background: var(--accent2); }
+  .phase-color-3 .topic-card-accent { background: var(--accent3); }
+  .phase-color-4 .topic-card-accent { background: var(--accent4); }
+  .phase-color-5 .topic-card-accent { background: #8e44ad; }
+
+  @media (max-width: 700px) {
+    .hero { padding: 48px 24px 40px; }
+    .container { padding: 0 20px; }
+    .overview { padding: 32px 24px; }
+    .phase { grid-template-columns: 48px 1fr; }
+    .phase-content { padding: 24px 20px; }
+    .schedule { padding: 48px 0; }
+    .phases { padding: 48px 0; }
+  }
+
+  /* PROJECTS SECTION */
+  .projects-section { padding: 80px 0; background: #0f1923; color: white; }
+  .projects-section .section-label { color: #4a6fa5; }
+  .projects-section .section-title { color: white; }
+  .projects-intro { color: #8899aa; font-size: 14px; max-width: 680px; margin-bottom: 56px; line-height: 1.8; }
+
+  .project-timeline { display: flex; flex-direction: column; gap: 0; }
+  .proj-block {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 0;
+    border-top: 1px solid rgba(255,255,255,0.07);
+    padding: 40px 0;
+    position: relative;
+  }
+  .proj-block:last-child { border-bottom: 1px solid rgba(255,255,255,0.07); }
+  .proj-meta { padding-right: 40px; padding-top: 4px; }
+  .proj-phase-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 2px;
+    display: inline-block;
+    margin-bottom: 12px;
+  }
+  .tag-p1 { background: rgba(192,57,43,0.2); color: #e74c3c; border: 1px solid rgba(192,57,43,0.3); }
+  .tag-p2 { background: rgba(230,126,34,0.2); color: #f39c12; border: 1px solid rgba(230,126,34,0.3); }
+  .tag-p3 { background: rgba(26,82,118,0.3); color: #5dade2; border: 1px solid rgba(26,82,118,0.4); }
+  .tag-p4 { background: rgba(30,132,73,0.2); color: #2ecc71; border: 1px solid rgba(30,132,73,0.3); }
+  .tag-p5 { background: rgba(142,68,173,0.2); color: #bb8fce; border: 1px solid rgba(142,68,173,0.3); }
+
+  .proj-when {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 6px;
+    line-height: 1.3;
+  }
+  .proj-duration {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: #556677;
+    letter-spacing: 0.1em;
+  }
+  .proj-difficulty {
+    display: flex;
+    gap: 3px;
+    margin-top: 12px;
+    align-items: center;
+  }
+  .diff-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+  }
+  .diff-filled { background: var(--accent2); }
+  .diff-empty { background: #2a3a4a; }
+  .diff-label { font-family: 'DM Mono', monospace; font-size: 9px; color: #556; margin-left: 6px; letter-spacing: 0.1em; text-transform: uppercase; }
+
+  .proj-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 2px;
+    padding: 28px 32px;
+    position: relative;
+  }
+  .proj-number {
+    position: absolute;
+    top: 24px; right: 28px;
+    font-family: 'Playfair Display', serif;
+    font-size: 48px;
+    font-weight: 900;
+    color: rgba(255,255,255,0.04);
+    line-height: 1;
+  }
+  .proj-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    color: white;
+  }
+  .proj-subtitle {
+    font-size: 12.5px;
+    color: #667788;
+    margin-bottom: 20px;
+    font-style: italic;
+  }
+  .proj-body { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px; }
+  @media (max-width: 800px) {
+    .proj-block { grid-template-columns: 1fr; }
+    .proj-meta { padding-right: 0; padding-bottom: 16px; }
+    .proj-body { grid-template-columns: 1fr; }
+  }
+  .proj-section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #445566;
+    margin-bottom: 10px;
+  }
+  .proj-list { list-style: none; }
+  .proj-list li {
+    font-size: 12.5px;
+    color: #8899aa;
+    padding: 3px 0;
+    padding-left: 16px;
+    position: relative;
+    line-height: 1.5;
+  }
+  .proj-list li::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: var(--accent2);
+    font-weight: 700;
+  }
+  .proj-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+  .stack-chip {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 2px;
+    padding: 3px 10px;
+    font-family: 'DM Mono', monospace;
+    font-size: 10.5px;
+    color: #aabbcc;
+  }
+  .proj-outcome {
+    background: rgba(230,126,34,0.08);
+    border-left: 2px solid var(--accent2);
+    padding: 10px 14px;
+    margin-top: 14px;
+    font-size: 12.5px;
+    color: #c8a76e;
+    line-height: 1.6;
+  }
+  .proj-outcome strong { color: var(--accent2); }
+  .proj-steps-full {
+    margin-top: 16px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding-top: 16px;
+  }
+  .proj-steps-full ol {
+    padding-left: 0;
+    list-style: none;
+    counter-reset: steps;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .proj-steps-full ol li {
+    counter-increment: steps;
+    padding-left: 28px;
+    font-size: 12.5px;
+    color: #7a8a9a;
+    position: relative;
+    line-height: 1.6;
+  }
+  .proj-steps-full ol li::before {
+    content: counter(steps);
+    position: absolute;
+    left: 0;
+    top: 1px;
+    width: 18px; height: 18px;
+    background: rgba(255,255,255,0.06);
+    border-radius: 50%;
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #aabbcc;
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-label">Complete Career Roadmap · India · 2024–2025</div>
+  <h1>How to Become a<br><span>Data Scientist</span></h1>
+  <div class="hero-meta">
+    <div class="hero-stat"><span class="val">5</span><span class="lbl">Learning Phases</span></div>
+    <div class="hero-stat"><span class="val">12–18</span><span class="lbl">Months to Job-Ready</span></div>
+    <div class="hero-stat"><span class="val">4–6 hrs</span><span class="lbl">Daily Commitment</span></div>
+    <div class="hero-stat"><span class="val">₹6–25L</span><span class="lbl">Starting Salary Range</span></div>
+  </div>
+</section>
+
+<!-- OVERVIEW -->
+<div class="overview">
+  <p>Data Science is one of the highest-demand careers in India right now. Companies across BFSI, e-commerce, healthcare, and SaaS are hiring aggressively. This roadmap gives a clear, step-by-step path — covering every skill, tool, resource, certification, and daily habit needed to get a job as a Data Scientist in India.</p>
+  <div class="overview-badges">
+    <div class="badge">✦ No prior experience needed</div>
+    <div class="badge">✦ Build real portfolio projects</div>
+    <div class="badge">✦ India-specific job market focus</div>
+    <div class="badge">✦ Free + paid resources both included</div>
+  </div>
+</div>
+
+<!-- PHASE SECTION -->
+<section class="phases">
+  <div class="container">
+    <div class="section-label">The Learning Journey</div>
+    <div class="section-title">5 Phases from Zero<br>to Data Scientist</div>
+
+    <!-- PHASE 1 -->
+    <div class="phase">
+      <div class="phase-number">01</div>
+      <div class="phase-content phase-color-1">
+        <div class="phase-header">
+          <div>
+            <div class="section-label">Phase One</div>
+            <div class="phase-title">Mathematics & Statistics Foundation</div>
+          </div>
+          <div class="phase-meta">
+            <div class="time-tag">MONTHS 1–2</div>
+            <div class="hours-tag">3–4 hrs/day</div>
+          </div>
+        </div>
+        <p class="phase-desc">Data Science is applied mathematics. Without a solid foundation here, everything else feels like magic — not skill.</p>
+
+        <div class="topics">
+          <div class="topic-card">
+            <div class="topic-card-accent"></div>
+            <h4>📐 Linear Algebra</h4>
+            <ul>
+              <li>Vectors and vector spaces</li>
+              <li>Matrices and matrix operations</li>
+              <li>Eigenvalues & Eigenvectors</li>
+              <li>Dot product, cross product</li>
+              <li>Matrix decomposition (SVD, PCA)</li>
+            </ul>
+          </div>
+          <div class="topic-card">
+            <div class="topic-card-accent"></div>
+            <h4>📊 Statistics — Core</h4>
+            <ul>
+              <li>Mean, Median, Mode, Variance, SD</li>
+              <li>Probability basics & Bayes theorem</li>
+              <li>Distributions: Normal, Binomial, Poisson</li>
+              <li>Hypothesis testing (t-test, chi-square)</li>
+              <li>p-values, confidence intervals</li>
+              <li>Correlation vs Causation</li>
+            </ul>
+          </div>
+          <div class="topic-card">
+            <div class="topic-card-accent"></div>
+            <h4>📈 Calculus (for ML)</h4>
+            <ul>
+              <li>Derivatives & partial derivatives</li>
+              <li>Chain rule (backpropagation basis)</li>
+              <li>Gradient & gradient descent</li>
+              <li>Integrals (basic understanding)</li>
+            </ul>
+          </div>
+          <div class="topic-card">
+            <div class="topic-card-accent"></div>
+            <h4>🎲 Probability Theory</h4>
+            <ul>
+              <li>Events, sample space, axioms</li>
+              <li>Conditional probability</li>
+              <li>Joint & marginal distributions</li>
+              <li>Expected value & variance</li>
+              <li>Law of Large Numbers, CLT</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="resources">
+          <h4>📚 Recommended Resources</h4>
+          <div class="resource-list">
+            <span class="resource-chip">Khan Academy — Statistics (FREE)</span>
+            <span class="resource-chip">3Blue1Brown — Linear Algebra (YouTube, FREE)</span>
+            <span class="resource-chip">StatQuest with Josh Starmer (YouTube, FREE)</span>
+            <span class="resource-chip">Mathematics for ML — Book (FREE PDF)</span>
+            <span class="resource-chip">MIT OpenCourseWare 18.65 (FREE)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PHASE 2 -->
+    <div class="phase">
+      <div class="phase-number">02</div>
+      <div class="phase-content phase-color-2">
+        <div class="phase-header">
+          <div>
+            <div class="section-label">Phase Two</div>
+            <div class="phase-title">Python Programming for Data Science</div>
+          </div>
+          <div class="phase-meta">
+            <div class="time-tag">MONTHS 2–4</div>
+            <div class="hours-tag">4–5 hrs/day</div>
+          </div>
+        </div>
+        <p class="phase-desc">Python is the primary language of Data Science worldwide. Master it deeply, not just the syntax.</p>
+
+        <div class="topics">
+          <div class="topic-card">
+            <div class="topic-card-accent"></div>
+            <h4>🐍 Python Fundamentals</h4>
+            <ul>
+              <li>Variables, data types, operators</li>
+              <li>Control flow (if/else, loops)</li>
+              <li>Functions, lambda, decorators</li>
+              <li>OOP: classes, objects, inheritance</li>
+              <li>File handling (CSV, JSON, TXT)</li>
+              <li>Error handling (try/except)</li>
+              <li>List comprehensions, generators</li>
+            </ul>
+          </div>
+          <div class="topic-card">
+            <div class="topic-card-accent"></div>
+            <h4>🔢 NumPy</h4>
+            <ul>
+              <li>Arrays, ndarray creation</li>
+              <li>Indexing, slicing, reshaping</li>
+              <li>Broadcasting rules</li>
+              <li>Mathematical operations</li>
+              <li>Random number generation</li>
+              <li>Linear algebra with NumPy</li>
+            </ul>
+          </div>
+          <div class="topic-card">
+            <div class="topic-card-accent"></div>
+            <h4>🐼 Pandas (Most Important!)</h4>
+            <ul>
+              <li>Series and DataFrame creation</li>
+              <li>Reading CSV, Excel, SQL, JSON</li>
+              <li>Data selection: loc, iloc</li>
+              <li>Filtering, sorting, groupby</li>
+              <li>Merging, joining, concatenating</li>
+              <li>Handling missing values</li>
+              <li>Apply, map, applymap</li>
+              <li>Pivot tables, time series</li>
+            </ul>
+          </div>
+          <div class="topic-card">
+            <div class="topic-card-accent"></div>
+            <h4>📊 Data Visualization</h4>
+            <ul>
+              <li>Matplotlib — all chart types</li>
+              <li>Seaborn — statistical plots</li>
+              <li>Plotly — interactive charts</li>
+              <li>Chart selection: when to use what</li>
+              <li>Subplots, annotations, styling</li>
+              <li>Storytelling with charts</li>
+            </ul>
+          </div>
+          <div class="topic-card">
+            <div class="topic-card-accent"></div>
+            <h4>🗄️ SQL (Mandatory)</h4>
+            <ul>
+              <li>SELECT, WHERE, ORDER BY</li>
+              <li>GROUP BY, HAVING</li>
+              <li>JOINS: INNER, LEFT, RIGHT, FULL</li>
+              <li>Subqueries, CTEs</li>
+              <li>Window functions (RANK, ROW_NUMBER)</li>
+              <li>Aggregate functions</li>
+              <li>Database design basics</li>
+            </ul>
+          </div>
+          <div class="topic-card">
+            <div class="topic-card-accent"></div>
+            <h4>🧹 Exploratory Data Analysis</h4>
+            <ul>
+              <li>Univariate, bivariate analysis</li>
+              <li>Outlier detection</li>
+              <li>Distribution analysis</li>
+              <li>Correlation heatmaps</li>
+              <li>Feature relationships</li>
+              <li>Business insight extraction</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="resources">
+          <h4>📚 Recommended Resources</h4>
+          <div class="resource-list">
+            <span class="resource-chip">Python.org Official Tutorial (FREE)</span>
+            <span class="resource-chip">freeCodeCamp Python (YouTube, FREE)</span>
+            <span class="resource-chip">Kaggle Python Course (FREE)</span>
+            <span class="resource-chip">Kaggle Pandas Course (FREE)</span>
+            <span class="resource-chip">Mode SQL Tutorial (FREE)</span>
+            <span class="resource-chip">LeetCode SQL 50 (FREE)</span>
+            <span class="resource-chip">CS Dojo (YouTube, FREE)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PHASE 3 -->
+    <div class="phase">
+      <div class="phase-number">03</div>
+      <div class="phase-content phase-color-3">
+        <div class="phase-header">
+          <div>
+            <div class="section-label">Phase Three</div>
+            <div class="phase-title">Machine Learning — Core to Advanced</div>
+          </div>
+          <div class="phase-meta">
+            <div class="time-tag">MONTHS 4–8</div>
+            <div class="hours-tag">4–6 hrs/day</div>
+          </div>
+        </div>
+        <p class="phase-desc">This is the heart of Data Science. Understand every algorithm deeply — the math behind it, when to use it, and how to evaluate it.</p>
+
+        <div class="topics">
+          <div class="topic-card">
+            <div class="topic-card-accent"></div>
+            <h4>📉 Supervised Learning — Regression</h4>
+            <ul>
+              <li>Linear Regression (Simple & Multiple)</li>
+              <li>Polynomial Regression</li>
+              <li>Ridge, Lasso, ElasticNet</li>
+              <li>Cost functions, R² score, RMSE</li>
+              <li>Assumptions of linear regression</li>
+            </ul>
+          </div>
+          <div class="topic-card">
+            <div class="topic-card-accent"></div>
+            <h4>🏷️ Supervised Learning — Classification</h4>
+            <ul>
+              <li>Logistic Regression</li>
+              <li>Decision Trees & pruning</li>
+              <li>Random Forest</li>
+              <li>Gradient Boosting (XGBoost, LightGBM)</li>
+              <li>Support Vector Machines (SVM)</li>
+              <li>K-Nearest Neighbors (KNN)</li>
+              <li>Naive Bayes</li>
+            </ul>
+          </div>
+          <div class="topic-card">
+            <div class="topic-card-accent"></div>
+            <h4>🔍 Unsupervised Learning</h4>
+            <ul>
+              <li>K-Means Clustering</li>
+              <li>Hierarchical Clustering</li>
+              <li>DBSCAN</li>
+              <li>PCA — Dimensionality Reduction</li>
+              <li>t-SNE, UMAP (visualization)</li>
+              <li>Anomaly Detection</li>
+            </ul>
+          </div>
+          <div class="topic-card">
+            <div class="topic-card-accent"></div>
+            <h4>⚙️ ML Engineering</h4>
+            <ul>
+              <li>Feature Engineering & Selection</li>
+              <li>Encoding: One-Hot, Label, Target</li>
+              <li>Scaling: StandardScaler, MinMax</li>
+              <li>Train/Validation/Test split</li>
+              <li>Cross-validation (K-Fold, Stratified)</li>
+              <li>Hyperparameter Tuning (GridSearch, RandomSearch, Optuna)</li>
+              <li>Handling imbalanced data (SMOTE)</li>
+            </ul>
+          </div>
+          <div class="topic-card">
+            <div class="topic-card-accent"></div>
+            <h4>📏 Model Evaluation</h4>
+            <ul>
+              <li>Confusion matrix, Accuracy</li>
+              <li>Precision, Recall, F1-Score</li>
+              <li>ROC Curve, AUC Score</li>
+              <li>Bias-Variance Tradeoff</li>
+              <li>Overfitting & Underfitting</li>
+              <li>Learning curves</li>
+            </ul>
+          </div>
+          <div class="topic-card">
+            <div class="topic-card-accent"></div>
+            <h4>🧠 Neural Networks Intro</h4>
+            <ul>
+              <li>Perceptron & multi-layer networks</li>
+              <li>Activation functions (ReLU, Sigmoid, Softmax)</li>
+              <li>Backpropagation (conceptual)</li>
+              <li>Loss functions</li>
+              <li>Intro to TensorFlow / Keras</li>
+              <li>Intro to PyTorch</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="resources">
+          <h4>📚 Recommended Resources</h4>
+          <div class="resource-list">
+            <span class="resource-chip">Coursera — Andrew Ng's ML Specialization (PAID/Audit)</span>
+            <span class="resource-chip">Scikit-learn Official Docs (FREE)</span>
+            <span class="resource-chip">StatQuest ML Playlist (YouTube, FREE)</span>
+            <span class="resource-chip">Hands-On ML with Scikit-Learn — Aurélien Géron (Book)</span>
+            <span class="resource-chip">fast.ai (FREE)</span>
+            <span class="resource-chip">Kaggle ML Course (FREE)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PHASE 4 -->
+    <div class="phase">
+      <div class="phase-number">04</div>
+      <div class="phase-content phase-color-4">
+        <div class="phase-header">
+          <div>
+            <div class="section-label">Phase Four</div>
+            <div class="phase-title">Deep Learning, NLP & Specializations</div>
+          </div>
+          <div class="phase-meta">
+            <div class="time-tag">MONTHS 8–12</div>
+            <div class="hours-tag">4–5 hrs/day</div>
+          </div>
+        </div>
+        <p class="phase-desc">Pick at least one specialization. The Indian job market rewards depth. Choose what excites you — NLP, Computer Vision, or Time Series.</p>
+
+        <div class="topics">
+          <div class="topic-card">
+            <div class="topic-card-accent"></div>
+            <h4>🧠 Deep Learning</h4>
+            <ul>
+              <li>CNNs — Convolutional Neural Networks</li>
+              <li>RNNs, LSTMs, GRUs</li>
+              <li>Transformers architecture</li>
+              <li>Transfer Learning</li>
+              <li>Regularization (Dropout, BatchNorm)</li>
+              <li>GPU training with Colab / Kaggle</li>
+            </ul>
+          </div>
+          <div class="topic-card">
+            <div class="topic-card-accent"></div>
+            <h4>💬 NLP (High Demand in India)</h4>
+            <ul>
+              <li>Text preprocessing (tokenization, stemming)</li>
+              <li>Bag of Words, TF-IDF</li>
+              <li>Word embeddings (Word2Vec, GloVe)</li>
+              <li>Sentiment analysis</li>
+              <li>BERT, GPT — fine-tuning basics</li>
+              <li>HuggingFace Transformers library</li>
+              <li>Named Entity Recognition (NER)</li>
+            </ul>
+          </div>
+          <div class="topic-card">
+            <div class="topic-card-accent"></div>
+            <h4>📸 Computer Vision</h4>
+            <ul>
+              <li>Image classification with CNNs</li>
+              <li>Object detection (YOLO, SSD)</li>
+              <li>Image segmentation</li>
+              <li>OpenCV basics</li>
+              <li>Pre-trained models (VGG, ResNet, EfficientNet)</li>
+            </ul>
+          </div>
+          <div class="topic-card">
+            <div class="topic-card-accent"></div>
+            <h4>📅 Time Series Analysis</h4>
+            <ul>
+              <li>Stationarity, ADF test</li>
+              <li>ARIMA, SARIMA models</li>
+              <li>Decomposition (trend, seasonality)</li>
+              <li>Prophet by Meta</li>
+              <li>LSTM for time series</li>
+              <li>Forecasting evaluation metrics</li>
+            </ul>
+          </div>
+          <div class="topic-card">
+            <div class="topic-card-accent"></div>
+            <h4>🤖 Generative AI & LLMs (2024 Trend)</h4>
+            <ul>
+              <li>Understanding LLMs (GPT, Claude, Llama)</li>
+              <li>Prompt Engineering</li>
+              <li>RAG — Retrieval Augmented Generation</li>
+              <li>LangChain basics</li>
+              <li>Vector databases (Pinecone, FAISS)</li>
+              <li>Fine-tuning open-source models</li>
+            </ul>
+          </div>
+          <div class="topic-card">
+            <div class="topic-card-accent"></div>
+            <h4>📡 Data Engineering Basics</h4>
+            <ul>
+              <li>ETL pipelines (Extract, Transform, Load)</li>
+              <li>Apache Spark basics</li>
+              <li>Airflow (workflow orchestration)</li>
+              <li>Data warehousing concepts</li>
+              <li>BigQuery / Snowflake basics</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="resources">
+          <h4>📚 Recommended Resources</h4>
+          <div class="resource-list">
+            <span class="resource-chip">deeplearning.ai Specialization (Coursera)</span>
+            <span class="resource-chip">HuggingFace Course (FREE)</span>
+            <span class="resource-chip">fast.ai Deep Learning (FREE)</span>
+            <span class="resource-chip">Andrej Karpathy — Neural Nets from Scratch (YouTube)</span>
+            <span class="resource-chip">Kaggle NLP Course (FREE)</span>
+            <span class="resource-chip">LangChain Official Docs (FREE)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PHASE 5 -->
+    <div class="phase">
+      <div class="phase-number">05</div>
+      <div class="phase-content phase-color-5">
+        <div class="phase-header">
+          <div>
+            <div class="section-label">Phase Five</div>
+            <div class="phase-title">MLOps, Portfolio & Job Hunt</div>
+          </div>
+          <div class="phase-meta">
+            <div class="time-tag">MONTHS 12–18</div>
+            <div class="hours-tag">3–4 hrs/day</div>
+          </div>
+        </div>
+        <p class="phase-desc">Build things that employers can see. Deploying models and having a strong GitHub/Kaggle profile separates hired candidates from rejected ones in India.</p>
+
+        <div class="topics">
+          <div class="topic-card">
+            <div class="topic-card-accent"></div>
+            <h4>🚀 Model Deployment</h4>
+            <ul>
+              <li>Flask / FastAPI — REST APIs</li>
+              <li>Streamlit — data apps (easiest to start)</li>
+              <li>Docker — containerization</li>
+              <li>Cloud: AWS SageMaker / GCP Vertex AI</li>
+              <li>Heroku / Render / Hugging Face Spaces</li>
+              <li>CI/CD basics for ML</li>
+            </ul>
+          </div>
+          <div class="topic-card">
+            <div class="topic-card-accent"></div>
+            <h4>📦 MLOps Concepts</h4>
+            <ul>
+              <li>MLflow — experiment tracking</li>
+              <li>Model versioning & registry</li>
+              <li>Data versioning with DVC</li>
+              <li>Model monitoring & drift detection</li>
+              <li>A/B testing for ML models</li>
+            </ul>
+          </div>
+          <div class="topic-card">
+            <div class="topic-card-accent"></div>
+            <h4>🗂️ Portfolio Building (Critical)</h4>
+            <ul>
+              <li>5–7 end-to-end projects on GitHub</li>
+              <li>Kaggle competitions (aim: top 15%)</li>
+              <li>Deploy at least 2 live projects</li>
+              <li>Write blogs on Medium/Substack</li>
+              <li>Personal portfolio website</li>
+              <li>Detailed README for every project</li>
+            </ul>
+          </div>
+          <div class="topic-card">
+            <div class="topic-card-accent"></div>
+            <h4>💼 Job Hunting in India</h4>
+            <ul>
+              <li>LinkedIn profile optimization</li>
+              <li>ATS-friendly resume tips</li>
+              <li>Apply on: LinkedIn, Naukri, AngelList, Instahyre</li>
+              <li>Referral-based job search</li>
+              <li>Networking: meetups, DataHack, NASSCOM events</li>
+              <li>Cold emailing hiring managers</li>
+            </ul>
+          </div>
+          <div class="topic-card">
+            <div class="topic-card-accent"></div>
+            <h4>🎯 Interview Preparation</h4>
+            <ul>
+              <li>Statistics & probability questions</li>
+              <li>SQL coding rounds (LeetCode SQL)</li>
+              <li>ML concepts: breadth + depth</li>
+              <li>Case studies: business problem solving</li>
+              <li>Python coding (arrays, strings, pandas)</li>
+              <li>Guesstimates & product sense (for MNC roles)</li>
+              <li>System design for ML (senior roles)</li>
+            </ul>
+          </div>
+          <div class="topic-card">
+            <div class="topic-card-accent"></div>
+            <h4>🎓 Higher Education (Optional)</h4>
+            <ul>
+              <li>MCA / M.Tech — for PSU/govt roles</li>
+              <li>IIT / IIM online certificates</li>
+              <li>upGrad / Great Learning PG Programs</li>
+              <li>Scaler / Intellipaat (with placement)</li>
+              <li>GATE CS (for research/PSU path)</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="resources">
+          <h4>📚 Recommended Resources</h4>
+          <div class="resource-list">
+            <span class="resource-chip">Streamlit Docs (FREE)</span>
+            <span class="resource-chip">MLflow Docs (FREE)</span>
+            <span class="resource-chip">AWS Free Tier (FREE)</span>
+            <span class="resource-chip">190 ML Interview Qs — GitHub (FREE)</span>
+            <span class="resource-chip">Kaggle Competitions (FREE)</span>
+            <span class="resource-chip">LeetCode SQL 50 (FREE)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- DAILY SCHEDULE -->
+<section class="schedule">
+  <div class="container">
+    <div class="section-label">Daily Routine</div>
+    <div class="section-title">How to Spend<br>4–6 Hours a Day</div>
+    <p style="color:#aaa; max-width:600px; margin-bottom:40px; font-size:14px;">Consistency beats intensity. A disciplined daily schedule across 12–18 months is what transforms a beginner into a job-ready Data Scientist.</p>
+
+    <div class="schedule-grid">
+      <div class="schedule-card">
+        <div class="sch-time">BLOCK 1 · 60–90 MIN</div>
+        <div class="sch-title">Concept Learning</div>
+        <div class="sch-desc">Watch one focused tutorial, read one documentation page, or study one textbook chapter. No multitasking. Full attention only.</div>
+      </div>
+      <div class="schedule-card">
+        <div class="sch-time">BLOCK 2 · 60–90 MIN</div>
+        <div class="sch-title">Hands-on Coding</div>
+        <div class="sch-desc">Open a Jupyter Notebook and implement what was learned. No copy-pasting from tutorials — type every line. Break things and fix them.</div>
+      </div>
+      <div class="schedule-card">
+        <div class="sch-time">BLOCK 3 · 45–60 MIN</div>
+        <div class="sch-title">SQL + Python Practice</div>
+        <div class="sch-desc">Solve 2–3 SQL problems on LeetCode or HackerRank. Or work through a Pandas exercise set. Builds interview muscle memory.</div>
+      </div>
+      <div class="schedule-card">
+        <div class="sch-time">BLOCK 4 · 60 MIN</div>
+        <div class="sch-title">Project Work</div>
+        <div class="sch-desc">Dedicate time to an ongoing Kaggle competition or personal project. Even 1 commit per day = an impressive GitHub streak over months.</div>
+      </div>
+      <div class="schedule-card">
+        <div class="sch-time">BLOCK 5 · 30 MIN</div>
+        <div class="sch-title">Review & Notes</div>
+        <div class="sch-desc">Write what was learned today in own words (Notion, Obsidian, or physical notebook). Spaced repetition = long-term retention.</div>
+      </div>
+      <div class="schedule-card">
+        <div class="sch-time">WEEKENDS</div>
+        <div class="sch-title">Deep Dives</div>
+        <div class="sch-desc">Use weekends for Kaggle competitions, watching full 2-hr conference talks, reading research papers, or building a mini project from scratch.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TOOLS -->
+<section class="tools-section">
+  <div class="container">
+    <div class="section-label">The Toolkit</div>
+    <div class="section-title">Every Tool to Learn<br>& Why It Matters</div>
+    <div class="tools-grid">
+      <div class="tool-item"><div class="tool-name">Python 3.10+</div><div class="tool-cat">Core Language</div></div>
+      <div class="tool-item"><div class="tool-name">Jupyter Notebook</div><div class="tool-cat">Development Environment</div></div>
+      <div class="tool-item"><div class="tool-name">VS Code</div><div class="tool-cat">IDE / Code Editor</div></div>
+      <div class="tool-item"><div class="tool-name">NumPy</div><div class="tool-cat">Numerical Computing</div></div>
+      <div class="tool-item"><div class="tool-name">Pandas</div><div class="tool-cat">Data Manipulation</div></div>
+      <div class="tool-item"><div class="tool-name">Matplotlib / Seaborn</div><div class="tool-cat">Data Visualization</div></div>
+      <div class="tool-item"><div class="tool-name">Plotly / Dash</div><div class="tool-cat">Interactive Visualization</div></div>
+      <div class="tool-item"><div class="tool-name">Scikit-learn</div><div class="tool-cat">Machine Learning</div></div>
+      <div class="tool-item"><div class="tool-name">XGBoost / LightGBM</div><div class="tool-cat">Boosting Algorithms</div></div>
+      <div class="tool-item"><div class="tool-name">TensorFlow / Keras</div><div class="tool-cat">Deep Learning</div></div>
+      <div class="tool-item"><div class="tool-name">PyTorch</div><div class="tool-cat">Deep Learning (Research)</div></div>
+      <div class="tool-item"><div class="tool-name">HuggingFace</div><div class="tool-cat">NLP / Transformers</div></div>
+      <div class="tool-item"><div class="tool-name">MySQL / PostgreSQL</div><div class="tool-cat">SQL Databases</div></div>
+      <div class="tool-item"><div class="tool-name">MongoDB</div><div class="tool-cat">NoSQL Basics</div></div>
+      <div class="tool-item"><div class="tool-name">Git & GitHub</div><div class="tool-cat">Version Control (MUST)</div></div>
+      <div class="tool-item"><div class="tool-name">Docker</div><div class="tool-cat">Containerization</div></div>
+      <div class="tool-item"><div class="tool-name">Streamlit</div><div class="tool-cat">ML App Deployment</div></div>
+      <div class="tool-item"><div class="tool-name">FastAPI / Flask</div><div class="tool-cat">API Development</div></div>
+      <div class="tool-item"><div class="tool-name">MLflow</div><div class="tool-cat">Experiment Tracking</div></div>
+      <div class="tool-item"><div class="tool-name">AWS / GCP</div><div class="tool-cat">Cloud Platforms</div></div>
+      <div class="tool-item"><div class="tool-name">Power BI / Tableau</div><div class="tool-cat">Business Intelligence</div></div>
+      <div class="tool-item"><div class="tool-name">Kaggle</div><div class="tool-cat">Competitions & Datasets</div></div>
+      <div class="tool-item"><div class="tool-name">Google Colab</div><div class="tool-cat">Free GPU Training</div></div>
+      <div class="tool-item"><div class="tool-name">Notion / Obsidian</div><div class="tool-cat">Knowledge Management</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section class="certs-section">
+  <div class="container">
+    <div class="section-label">Credentials</div>
+    <div class="section-title">Certifications That<br>Matter in India</div>
+    <div class="certs-grid">
+      <div class="cert-card">
+        <div class="cert-level level-beginner">Beginner · Free</div>
+        <div class="cert-name">Google Data Analytics — Coursera</div>
+        <div class="cert-body">Great starting point. Covers spreadsheets, SQL, Tableau, R. Highly recognized by Indian recruiters.</div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-level level-beginner">Beginner · Free</div>
+        <div class="cert-name">IBM Data Science Professional — Coursera</div>
+        <div class="cert-body">9-course series covering Python, SQL, ML, and visualization. Free to audit, paid for certificate.</div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-level level-intermediate">Intermediate · Paid</div>
+        <div class="cert-name">Andrew Ng's ML Specialization — deeplearning.ai</div>
+        <div class="cert-body">The gold standard of ML education globally. 3-course series, highly respected in Indian tech companies.</div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-level level-intermediate">Intermediate · Paid</div>
+        <div class="cert-name">Deep Learning Specialization — deeplearning.ai</div>
+        <div class="cert-body">5-course deep learning series. CNN, RNN, Transformers. Pairs perfectly with the ML specialization above.</div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-level level-intermediate">Intermediate · Free</div>
+        <div class="cert-name">AWS Certified Cloud Practitioner</div>
+        <div class="cert-body">Entry-level AWS cert. India's IT sector heavily uses AWS. Even a cloud foundation cert adds value to a DS resume.</div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-level level-advanced">Advanced · Paid</div>
+        <div class="cert-name">TensorFlow Developer Certificate — Google</div>
+        <div class="cert-body">Proctored, hands-on exam by Google. Strong signal for DL engineer roles. Recognized by MNCs and product companies in India.</div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-level level-advanced">Advanced · Paid</div>
+        <div class="cert-name">AWS Certified ML — Specialty</div>
+        <div class="cert-body">The most valued cloud+ML certification in India. Requires real AWS experience. Excellent for MLOps / applied ML roles.</div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-level level-intermediate">Intermediate · Free</div>
+        <div class="cert-name">Kaggle ML / Python / SQL Certificates</div>
+        <div class="cert-body">Free, quick, and recognized. Add all Kaggle certificates to LinkedIn. Shows consistent self-learning to recruiters.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SALARY -->
+<section class="salary-section">
+  <div class="container">
+    <div class="section-label">Indian Job Market</div>
+    <div class="section-title">Salaries to Expect<br>Across Experience Levels</div>
+    <div class="salary-grid">
+      <div class="salary-card">
+        <div class="salary-role">Data Analyst (Entry)</div>
+        <div class="salary-range">₹3.5–6 LPA</div>
+        <div class="salary-exp">0–1 YEARS EXPERIENCE</div>
+      </div>
+      <div class="salary-card">
+        <div class="salary-role">Junior Data Scientist</div>
+        <div class="salary-range">₹6–10 LPA</div>
+        <div class="salary-exp">0–2 YEARS EXPERIENCE</div>
+      </div>
+      <div class="salary-card">
+        <div class="salary-role">Data Scientist</div>
+        <div class="salary-range">₹10–18 LPA</div>
+        <div class="salary-exp">2–4 YEARS EXPERIENCE</div>
+      </div>
+      <div class="salary-card">
+        <div class="salary-role">Senior Data Scientist</div>
+        <div class="salary-range">₹18–30 LPA</div>
+        <div class="salary-exp">4–7 YEARS EXPERIENCE</div>
+      </div>
+      <div class="salary-card">
+        <div class="salary-role">Lead / Principal DS</div>
+        <div class="salary-range">₹30–55 LPA</div>
+        <div class="salary-exp">7+ YEARS EXPERIENCE</div>
+      </div>
+      <div class="salary-card">
+        <div class="salary-role">ML Engineer (FAANG India)</div>
+        <div class="salary-range">₹40–80 LPA</div>
+        <div class="salary-exp">3–5 YEARS WITH STRONG PORTFOLIO</div>
+      </div>
+    </div>
+    <p style="color:rgba(255,255,255,0.4); font-size:12px; margin-top:24px; font-family: 'DM Mono', monospace;">* Figures are approximate. Vary by city (Bengaluru > Hyderabad > Pune > Delhi NCR > Chennai), company type (product > service), and individual negotiation skills.</p>
+  </div>
+</section>
+
+<!-- PROJECTS SECTION -->
+<section class="projects-section">
+  <div class="container">
+    <div class="section-label">Hands-On Work</div>
+    <div class="section-title">15 Projects to Build —<br>Phase by Phase</div>
+    <p class="projects-intro">Projects are the most important part of this journey. Without them, all theory is useless. Each project below is mapped to a specific phase, includes step-by-step instructions on how to build it, what tools to use, and what the final outcome should look like on GitHub.</p>
+
+    <div class="project-timeline">
+
+      <!-- PROJECT 1 -->
+      <div class="proj-block">
+        <div class="proj-meta">
+          <div class="proj-phase-tag tag-p1">Phase 1 · Month 2</div>
+          <div class="proj-when">Stats &amp; EDA<br>Project</div>
+          <div class="proj-duration">⏱ 1–2 WEEKS</div>
+          <div class="proj-difficulty">
+            <div class="diff-dot diff-filled"></div>
+            <div class="diff-dot diff-empty"></div>
+            <div class="diff-dot diff-empty"></div>
+            <div class="diff-dot diff-empty"></div>
+            <div class="diff-dot diff-empty"></div>
+            <span class="diff-label">Beginner</span>
+          </div>
+        </div>
+        <div class="proj-card">
+          <div class="proj-number">01</div>
+          <div class="proj-title">Indian Premier League (IPL) Statistics Analysis</div>
+          <div class="proj-subtitle">Apply statistics concepts to real cricket data — a topic recruiters love seeing from Indian candidates</div>
+          <div class="proj-body">
+            <div>
+              <div class="proj-section-label">What to Build</div>
+              <ul class="proj-list">
+                <li>Analyze 10+ years of IPL match &amp; delivery data</li>
+                <li>Find top-performing batsmen, bowlers, teams</li>
+                <li>Visualize run distributions, win probabilities</li>
+                <li>Apply hypothesis testing (e.g. toss advantage?)</li>
+                <li>Calculate correlation between stats and wins</li>
+              </ul>
+            </div>
+            <div>
+              <div class="proj-section-label">Step-by-Step: How to Do It</div>
+              <div class="proj-steps-full">
+                <ol>
+                  <li>Download IPL dataset from Kaggle (matches.csv + deliveries.csv)</li>
+                  <li>Load into Pandas, explore shape, dtypes, missing values</li>
+                  <li>Clean data: fill nulls, fix inconsistent team names</li>
+                  <li>Compute stats: batting average, strike rate, economy rate</li>
+                  <li>Create 8–10 visualizations using Matplotlib &amp; Seaborn</li>
+                  <li>Run a chi-square test: does winning toss affect match result?</li>
+                  <li>Write a clear README explaining every finding</li>
+                  <li>Push to GitHub with a well-structured notebook</li>
+                </ol>
+              </div>
+            </div>
+          </div>
+          <div class="proj-stack">
+            <span class="stack-chip">Python</span>
+            <span class="stack-chip">Pandas</span>
+            <span class="stack-chip">NumPy</span>
+            <span class="stack-chip">Matplotlib</span>
+            <span class="stack-chip">Seaborn</span>
+            <span class="stack-chip">SciPy (stats)</span>
+            <span class="stack-chip">Jupyter Notebook</span>
+          </div>
+          <div class="proj-outcome"><strong>GitHub Output:</strong> A clean notebook with 10+ charts, statistical findings, and a professional README. Shows mastery of EDA and statistics — the most asked topic in first-round data science interviews.</div>
+        </div>
+      </div>
+
+      <!-- PROJECT 2 -->
+      <div class="proj-block">
+        <div class="proj-meta">
+          <div class="proj-phase-tag tag-p2">Phase 2 · Month 3</div>
+          <div class="proj-when">Python +<br>SQL Project</div>
+          <div class="proj-duration">⏱ 2 WEEKS</div>
+          <div class="proj-difficulty">
+            <div class="diff-dot diff-filled"></div>
+            <div class="diff-dot diff-filled"></div>
+            <div class="diff-dot diff-empty"></div>
+            <div class="diff-dot diff-empty"></div>
+            <div class="diff-dot diff-empty"></div>
+            <span class="diff-label">Easy–Mid</span>
+          </div>
+        </div>
+        <div class="proj-card">
+          <div class="proj-number">02</div>
+          <div class="proj-title">E-Commerce Sales Dashboard (SQL + Python)</div>
+          <div class="proj-subtitle">Build a complete sales analysis pipeline — from raw SQL queries to a visual Python dashboard</div>
+          <div class="proj-body">
+            <div>
+              <div class="proj-section-label">What to Build</div>
+              <ul class="proj-list">
+                <li>SQL queries to extract monthly revenue, top products, customer segments</li>
+                <li>Python pipeline to transform &amp; visualize SQL output</li>
+                <li>Customer cohort analysis (retention by signup month)</li>
+                <li>RFM analysis (Recency, Frequency, Monetary)</li>
+                <li>Interactive Plotly dashboard as HTML export</li>
+              </ul>
+            </div>
+            <div>
+              <div class="proj-section-label">Step-by-Step: How to Do It</div>
+              <div class="proj-steps-full">
+                <ol>
+                  <li>Download "Brazilian E-Commerce" dataset from Kaggle (Olist)</li>
+                  <li>Load CSVs into SQLite using Python's sqlite3 library</li>
+                  <li>Write 15+ SQL queries answering business questions</li>
+                  <li>Pull query results into Pandas DataFrames</li>
+                  <li>Perform RFM segmentation using Pandas groupby</li>
+                  <li>Build 6–8 Plotly charts (bar, line, scatter, heatmap)</li>
+                  <li>Export dashboard as interactive HTML file</li>
+                  <li>Write a LinkedIn post explaining 3 business insights found</li>
+                </ol>
+              </div>
+            </div>
+          </div>
+          <div class="proj-stack">
+            <span class="stack-chip">Python</span>
+            <span class="stack-chip">SQL (SQLite)</span>
+            <span class="stack-chip">Pandas</span>
+            <span class="stack-chip">Plotly</span>
+            <span class="stack-chip">Jupyter</span>
+          </div>
+          <div class="proj-outcome"><strong>GitHub Output:</strong> SQL script file + Python notebook + interactive HTML dashboard. This project directly mirrors what a Data Analyst does at Indian e-commerce companies like Meesho, Flipkart, Nykaa.</div>
+        </div>
+      </div>
+
+      <!-- PROJECT 3 -->
+      <div class="proj-block">
+        <div class="proj-meta">
+          <div class="proj-phase-tag tag-p2">Phase 2 · Month 4</div>
+          <div class="proj-when">EDA Deep<br>Dive</div>
+          <div class="proj-duration">⏱ 10 DAYS</div>
+          <div class="proj-difficulty">
+            <div class="diff-dot diff-filled"></div>
+            <div class="diff-dot diff-filled"></div>
+            <div class="diff-dot diff-empty"></div>
+            <div class="diff-dot diff-empty"></div>
+            <div class="diff-dot diff-empty"></div>
+            <span class="diff-label">Easy–Mid</span>
+          </div>
+        </div>
+        <div class="proj-card">
+          <div class="proj-number">03</div>
+          <div class="proj-title">India Air Quality Index (AQI) Trend Analysis</div>
+          <div class="proj-subtitle">Real-world messy data from Indian cities — cleaning, visualizing, and storytelling with environmental data</div>
+          <div class="proj-body">
+            <div>
+              <div class="proj-section-label">What to Build</div>
+              <ul class="proj-list">
+                <li>Clean and process multi-year AQI data across 30+ cities</li>
+                <li>Identify most/least polluted cities &amp; seasons</li>
+                <li>Time-series trend lines per pollutant (PM2.5, NO2, CO)</li>
+                <li>Geospatial heatmap of pollution across India</li>
+                <li>Correlation between AQI and city population/industrial data</li>
+              </ul>
+            </div>
+            <div>
+              <div class="proj-section-label">Step-by-Step: How to Do It</div>
+              <div class="proj-steps-full">
+                <ol>
+                  <li>Download India AQI dataset from Kaggle or data.gov.in</li>
+                  <li>Handle massive missing values using forward fill and interpolation</li>
+                  <li>Normalize city names (many duplicates in raw data)</li>
+                  <li>Create seasonal groupings (winter = Oct–Feb, etc.)</li>
+                  <li>Plot city-wise AQI over years using Plotly animated charts</li>
+                  <li>Use Folium library to plot AQI as India map heatmap</li>
+                  <li>Write a data story: "What happened to Delhi's AQI after COVID lockdown?"</li>
+                  <li>Export as a Jupyter notebook with narrative markdown cells</li>
+                </ol>
+              </div>
+            </div>
+          </div>
+          <div class="proj-stack">
+            <span class="stack-chip">Python</span>
+            <span class="stack-chip">Pandas</span>
+            <span class="stack-chip">Plotly</span>
+            <span class="stack-chip">Folium (maps)</span>
+            <span class="stack-chip">Seaborn</span>
+          </div>
+          <div class="proj-outcome"><strong>GitHub Output:</strong> Storytelling notebook with India maps and animated charts. Shows that data cleaning skills, geographic data handling, and narrative thinking — all critical for Indian data analyst roles.</div>
+        </div>
+      </div>
+
+      <!-- PROJECT 4 -->
+      <div class="proj-block">
+        <div class="proj-meta">
+          <div class="proj-phase-tag tag-p3">Phase 3 · Month 5</div>
+          <div class="proj-when">First ML<br>Model</div>
+          <div class="proj-duration">⏱ 2–3 WEEKS</div>
+          <div class="proj-difficulty">
+            <div class="diff-dot diff-filled"></div>
+            <div class="diff-dot diff-filled"></div>
+            <div class="diff-dot diff-filled"></div>
+            <div class="diff-dot diff-empty"></div>
+            <div class="diff-dot diff-empty"></div>
+            <span class="diff-label">Intermediate</span>
+          </div>
+        </div>
+        <div class="proj-card">
+          <div class="proj-number">04</div>
+          <div class="proj-title">House Price Prediction — Indian Cities</div>
+          <div class="proj-subtitle">Classic regression project with an Indian twist — use real Bengaluru or Mumbai housing data</div>
+          <div class="proj-body">
+            <div>
+              <div class="proj-section-label">What to Build</div>
+              <ul class="proj-list">
+                <li>Predict property price based on area, BHK, location, amenities</li>
+                <li>Compare 5+ regression models (Linear, Ridge, Random Forest, XGBoost)</li>
+                <li>Feature engineering: price per sqft, location clustering</li>
+                <li>Outlier removal &amp; skewness correction</li>
+                <li>Final model with RMSE, MAE, R² evaluation</li>
+              </ul>
+            </div>
+            <div>
+              <div class="proj-section-label">Step-by-Step: How to Do It</div>
+              <div class="proj-steps-full">
+                <ol>
+                  <li>Download "Bengaluru House Data" from Kaggle</li>
+                  <li>Clean: remove junk rows, fix BHK column, handle "2100 sqft" type strings</li>
+                  <li>Engineer: create price_per_sqft feature, encode locations</li>
+                  <li>Remove outliers using standard deviation method</li>
+                  <li>Split data 80/20, apply StandardScaler to features</li>
+                  <li>Train: Linear Regression, Ridge, Random Forest, XGBoost</li>
+                  <li>Use GridSearchCV to tune XGBoost hyperparameters</li>
+                  <li>Compare models in a summary table with all metrics</li>
+                  <li>Save best model using joblib/pickle</li>
+                </ol>
+              </div>
+            </div>
+          </div>
+          <div class="proj-stack">
+            <span class="stack-chip">Python</span>
+            <span class="stack-chip">Scikit-learn</span>
+            <span class="stack-chip">XGBoost</span>
+            <span class="stack-chip">Pandas</span>
+            <span class="stack-chip">Matplotlib</span>
+            <span class="stack-chip">joblib</span>
+          </div>
+          <div class="proj-outcome"><strong>GitHub Output:</strong> Clean notebook with model comparison table, feature importance chart, and saved model file. This is the most commonly asked project type in Indian data science interviews — be ready to explain every decision.</div>
+        </div>
+      </div>
+
+      <!-- PROJECT 5 -->
+      <div class="proj-block">
+        <div class="proj-meta">
+          <div class="proj-phase-tag tag-p3">Phase 3 · Month 6</div>
+          <div class="proj-when">Classification<br>Project</div>
+          <div class="proj-duration">⏱ 2–3 WEEKS</div>
+          <div class="proj-difficulty">
+            <div class="diff-dot diff-filled"></div>
+            <div class="diff-dot diff-filled"></div>
+            <div class="diff-dot diff-filled"></div>
+            <div class="diff-dot diff-empty"></div>
+            <div class="diff-dot diff-empty"></div>
+            <span class="diff-label">Intermediate</span>
+          </div>
+        </div>
+        <div class="proj-card">
+          <div class="proj-number">05</div>
+          <div class="proj-title">Loan Default Prediction (Banking &amp; NBFC Context)</div>
+          <div class="proj-subtitle">Extremely relevant for India's fintech boom — HDFC, ICICI, Bajaj Finance, Paytm all use this type of model</div>
+          <div class="proj-body">
+            <div>
+              <div class="proj-section-label">What to Build</div>
+              <ul class="proj-list">
+                <li>Binary classification: will this customer default?</li>
+                <li>Handle heavily imbalanced data (95% non-default)</li>
+                <li>Apply SMOTE oversampling technique</li>
+                <li>Feature importance using SHAP values</li>
+                <li>Optimize for Recall (minimizing false negatives = key business goal)</li>
+                <li>Final ROC-AUC evaluation with threshold tuning</li>
+              </ul>
+            </div>
+            <div>
+              <div class="proj-section-label">Step-by-Step: How to Do It</div>
+              <div class="proj-steps-full">
+                <ol>
+                  <li>Download "Home Credit Default Risk" from Kaggle</li>
+                  <li>Explore class imbalance: plot target distribution</li>
+                  <li>Handle nulls: impute with median/mode strategically</li>
+                  <li>Encode categoricals, apply feature selection (VIF, correlation)</li>
+                  <li>Apply SMOTE from imbalanced-learn library</li>
+                  <li>Train Logistic Regression, Random Forest, LightGBM</li>
+                  <li>Tune classification threshold (don't just use 0.5)</li>
+                  <li>Install SHAP and plot feature importance waterfall chart</li>
+                  <li>Write conclusion: which features drive default most?</li>
+                </ol>
+              </div>
+            </div>
+          </div>
+          <div class="proj-stack">
+            <span class="stack-chip">Python</span>
+            <span class="stack-chip">Scikit-learn</span>
+            <span class="stack-chip">LightGBM</span>
+            <span class="stack-chip">SHAP</span>
+            <span class="stack-chip">imbalanced-learn</span>
+            <span class="stack-chip">Pandas</span>
+          </div>
+          <div class="proj-outcome"><strong>GitHub Output:</strong> Full pipeline notebook with SHAP explainability charts. Directly applicable to fintech, banking, and NBFC jobs — among the most common data science openings in India.</div>
+        </div>
+      </div>
+
+      <!-- PROJECT 6 -->
+      <div class="proj-block">
+        <div class="proj-meta">
+          <div class="proj-phase-tag tag-p3">Phase 3 · Month 7</div>
+          <div class="proj-when">Kaggle<br>Competition</div>
+          <div class="proj-duration">⏱ 3–4 WEEKS</div>
+          <div class="proj-difficulty">
+            <div class="diff-dot diff-filled"></div>
+            <div class="diff-dot diff-filled"></div>
+            <div class="diff-dot diff-filled"></div>
+            <div class="diff-dot diff-filled"></div>
+            <div class="diff-dot diff-empty"></div>
+            <span class="diff-label">Hard</span>
+          </div>
+        </div>
+        <div class="proj-card">
+          <div class="proj-number">06</div>
+          <div class="proj-title">First Kaggle Competition Entry (Any Active Competition)</div>
+          <div class="proj-subtitle">Don't aim to win — aim to finish, submit, and learn from public notebooks</div>
+          <div class="proj-body">
+            <div>
+              <div class="proj-section-label">What to Build</div>
+              <ul class="proj-list">
+                <li>A full, end-to-end competition submission</li>
+                <li>Baseline model first, then iterative improvements</li>
+                <li>Ensemble of 2–3 models for final submission</li>
+                <li>Target: top 40% on leaderboard minimum</li>
+                <li>Share a public notebook on Kaggle with findings</li>
+              </ul>
+            </div>
+            <div>
+              <div class="proj-section-label">Step-by-Step: How to Do It</div>
+              <div class="proj-steps-full">
+                <ol>
+                  <li>Go to kaggle.com/competitions → filter "Getting Started" or "Playground"</li>
+                  <li>Read competition description, data description, evaluation metric carefully</li>
+                  <li>Download data and do quick EDA (30 mins max)</li>
+                  <li>Build a naive baseline model (even a mean predictor) and submit</li>
+                  <li>Study top 3 public notebooks — understand their tricks</li>
+                  <li>Implement feature engineering ideas from notebooks</li>
+                  <li>Try XGBoost, LightGBM, CatBoost individually</li>
+                  <li>Blend predictions: 0.5×XGB + 0.5×LGB = often better than either alone</li>
+                  <li>Submit 5+ times with incremental improvements</li>
+                  <li>Post a Kaggle notebook sharing what worked</li>
+                </ol>
+              </div>
+            </div>
+          </div>
+          <div class="proj-stack">
+            <span class="stack-chip">XGBoost</span>
+            <span class="stack-chip">LightGBM</span>
+            <span class="stack-chip">CatBoost</span>
+            <span class="stack-chip">Optuna</span>
+            <span class="stack-chip">Scikit-learn</span>
+            <span class="stack-chip">Kaggle Notebooks</span>
+          </div>
+          <div class="proj-outcome"><strong>Kaggle Output:</strong> A public notebook + leaderboard rank. This earns first Kaggle medals and is visible to recruiters who check Kaggle profiles. Even top 30% is impressive for a first competition.</div>
+        </div>
+      </div>
+
+      <!-- PROJECT 7 -->
+      <div class="proj-block">
+        <div class="proj-meta">
+          <div class="proj-phase-tag tag-p3">Phase 3 · Month 8</div>
+          <div class="proj-when">Unsupervised<br>Learning</div>
+          <div class="proj-duration">⏱ 2 WEEKS</div>
+          <div class="proj-difficulty">
+            <div class="diff-dot diff-filled"></div>
+            <div class="diff-dot diff-filled"></div>
+            <div class="diff-dot diff-filled"></div>
+            <div class="diff-dot diff-empty"></div>
+            <div class="diff-dot diff-empty"></div>
+            <span class="diff-label">Intermediate</span>
+          </div>
+        </div>
+        <div class="proj-card">
+          <div class="proj-number">07</div>
+          <div class="proj-title">Customer Segmentation for a D2C Brand</div>
+          <div class="proj-subtitle">Use clustering to group customers — a project type that appears constantly in Indian startup interviews</div>
+          <div class="proj-body">
+            <div>
+              <div class="proj-section-label">What to Build</div>
+              <ul class="proj-list">
+                <li>Segment customers into 4–6 behavioral groups</li>
+                <li>Apply K-Means and compare with Hierarchical clustering</li>
+                <li>Find optimal K using Elbow Method &amp; Silhouette Score</li>
+                <li>Visualize clusters in 2D using PCA + t-SNE</li>
+                <li>Write actionable marketing recommendations per segment</li>
+              </ul>
+            </div>
+            <div>
+              <div class="proj-section-label">Step-by-Step: How to Do It</div>
+              <div class="proj-steps-full">
+                <ol>
+                  <li>Use "Mall Customer Segmentation" or "Online Retail" dataset from Kaggle</li>
+                  <li>Compute RFM features (Recency, Frequency, Monetary) per customer</li>
+                  <li>Scale all features using StandardScaler</li>
+                  <li>Apply Elbow Method: plot WCSS for K=2 to K=12</li>
+                  <li>Run K-Means with best K, assign cluster labels to data</li>
+                  <li>Reduce to 2D with PCA, visualize clusters in scatter plot</li>
+                  <li>Profile each cluster: average spend, frequency, recency</li>
+                  <li>Name clusters: "High-Value Loyal", "At-Risk", "New Buyers", etc.</li>
+                  <li>Write business recommendations for each segment</li>
+                </ol>
+              </div>
+            </div>
+          </div>
+          <div class="proj-stack">
+            <span class="stack-chip">Python</span>
+            <span class="stack-chip">Scikit-learn</span>
+            <span class="stack-chip">Pandas</span>
+            <span class="stack-chip">PCA</span>
+            <span class="stack-chip">t-SNE</span>
+            <span class="stack-chip">Matplotlib</span>
+          </div>
+          <div class="proj-outcome"><strong>GitHub Output:</strong> Notebook with cluster visualizations + business segment profiles. Shows the ability to translate ML output into business language — a rare and valued skill in Indian startups.</div>
+        </div>
+      </div>
+
+      <!-- PROJECT 8 -->
+      <div class="proj-block">
+        <div class="proj-meta">
+          <div class="proj-phase-tag tag-p4">Phase 4 · Month 9</div>
+          <div class="proj-when">NLP<br>Project</div>
+          <div class="proj-duration">⏱ 3 WEEKS</div>
+          <div class="proj-difficulty">
+            <div class="diff-dot diff-filled"></div>
+            <div class="diff-dot diff-filled"></div>
+            <div class="diff-dot diff-filled"></div>
+            <div class="diff-dot diff-filled"></div>
+            <div class="diff-dot diff-empty"></div>
+            <span class="diff-label">Hard</span>
+          </div>
+        </div>
+        <div class="proj-card">
+          <div class="proj-number">08</div>
+          <div class="proj-title">Product Review Sentiment Analyzer (Amazon India)</div>
+          <div class="proj-subtitle">NLP pipeline on Hindi-English (Hinglish) mixed reviews — a uniquely Indian NLP challenge</div>
+          <div class="proj-body">
+            <div>
+              <div class="proj-section-label">What to Build</div>
+              <ul class="proj-list">
+                <li>Classify reviews as Positive / Negative / Neutral</li>
+                <li>Build both a classical ML pipeline (TF-IDF + Logistic) and a BERT-based model</li>
+                <li>Compare accuracy of both approaches</li>
+                <li>Word cloud per sentiment category</li>
+                <li>Streamlit app where user types a review and gets sentiment live</li>
+              </ul>
+            </div>
+            <div>
+              <div class="proj-section-label">Step-by-Step: How to Do It</div>
+              <div class="proj-steps-full">
+                <ol>
+                  <li>Download "Amazon Product Reviews" dataset from Kaggle</li>
+                  <li>Label reviews: rating 4–5 = Positive, 3 = Neutral, 1–2 = Negative</li>
+                  <li>Clean text: remove HTML tags, punctuation, stopwords</li>
+                  <li>Model 1: TF-IDF vectorizer → Logistic Regression (baseline)</li>
+                  <li>Model 2: Use HuggingFace "distilbert-base-uncased" for sentiment</li>
+                  <li>Fine-tune DistilBERT on training data using Trainer API</li>
+                  <li>Compare: F1-score of TF-IDF vs BERT</li>
+                  <li>Build a simple Streamlit UI: text input → sentiment output</li>
+                  <li>Deploy to Hugging Face Spaces (free hosting)</li>
+                </ol>
+              </div>
+            </div>
+          </div>
+          <div class="proj-stack">
+            <span class="stack-chip">Python</span>
+            <span class="stack-chip">HuggingFace Transformers</span>
+            <span class="stack-chip">Scikit-learn</span>
+            <span class="stack-chip">NLTK</span>
+            <span class="stack-chip">Streamlit</span>
+            <span class="stack-chip">Torch</span>
+          </div>
+          <div class="proj-outcome"><strong>Live Demo:</strong> A deployed Streamlit app on Hugging Face Spaces. This is a LIVE project that can be linked directly in a resume — one of the most powerful portfolio items for Indian NLP roles at Swiggy, Amazon, Flipkart.</div>
+        </div>
+      </div>
+
+      <!-- PROJECT 9 -->
+      <div class="proj-block">
+        <div class="proj-meta">
+          <div class="proj-phase-tag tag-p4">Phase 4 · Month 10</div>
+          <div class="proj-when">Time Series<br>Forecasting</div>
+          <div class="proj-duration">⏱ 2–3 WEEKS</div>
+          <div class="proj-difficulty">
+            <div class="diff-dot diff-filled"></div>
+            <div class="diff-dot diff-filled"></div>
+            <div class="diff-dot diff-filled"></div>
+            <div class="diff-dot diff-filled"></div>
+            <div class="diff-dot diff-empty"></div>
+            <span class="diff-label">Hard</span>
+          </div>
+        </div>
+        <div class="proj-card">
+          <div class="proj-number">09</div>
+          <div class="proj-title">Stock Price Forecasting — NSE/BSE Listed Companies</div>
+          <div class="proj-subtitle">Forecast NIFTY 50 or any Indian stock using ARIMA, Prophet, and LSTM — compare all three</div>
+          <div class="proj-body">
+            <div>
+              <div class="proj-section-label">What to Build</div>
+              <ul class="proj-list">
+                <li>Multi-step price forecasting: next 30 days</li>
+                <li>Three approaches: ARIMA, Prophet, LSTM neural network</li>
+                <li>Stationarity testing with ADF test</li>
+                <li>Visualize actual vs predicted with confidence intervals</li>
+                <li>Evaluate using MAPE, RMSE across all three models</li>
+              </ul>
+            </div>
+            <div>
+              <div class="proj-section-label">Step-by-Step: How to Do It</div>
+              <div class="proj-steps-full">
+                <ol>
+                  <li>Download data using yfinance library: yf.download("RELIANCE.NS")</li>
+                  <li>Plot the raw price series — identify trend, seasonality visually</li>
+                  <li>Run ADF test for stationarity; apply differencing if needed</li>
+                  <li>Fit ARIMA: use auto_arima from pmdarima to find best p,d,q</li>
+                  <li>Fit Prophet: add Indian holidays as regressors</li>
+                  <li>Build LSTM: normalize data, create sequences (look_back=60 days)</li>
+                  <li>Train LSTM using Keras with 2 LSTM layers + Dropout</li>
+                  <li>Plot all three forecasts on the same chart for comparison</li>
+                  <li>Calculate RMSE and MAPE for each model in a summary table</li>
+                </ol>
+              </div>
+            </div>
+          </div>
+          <div class="proj-stack">
+            <span class="stack-chip">Python</span>
+            <span class="stack-chip">yfinance</span>
+            <span class="stack-chip">pmdarima</span>
+            <span class="stack-chip">Prophet</span>
+            <span class="stack-chip">Keras / TensorFlow</span>
+            <span class="stack-chip">Plotly</span>
+          </div>
+          <div class="proj-outcome"><strong>GitHub Output:</strong> Notebook comparing 3 forecasting methods on Indian stocks. Highly relevant for BFSI companies (HDFC, Kotak, Zerodha, Groww) which are among India's biggest DS hirers.</div>
+        </div>
+      </div>
+
+      <!-- PROJECT 10 -->
+      <div class="proj-block">
+        <div class="proj-meta">
+          <div class="proj-phase-tag tag-p4">Phase 4 · Month 11</div>
+          <div class="proj-when">Computer<br>Vision</div>
+          <div class="proj-duration">⏱ 3 WEEKS</div>
+          <div class="proj-difficulty">
+            <div class="diff-dot diff-filled"></div>
+            <div class="diff-dot diff-filled"></div>
+            <div class="diff-dot diff-filled"></div>
+            <div class="diff-dot diff-filled"></div>
+            <div class="diff-dot diff-empty"></div>
+            <span class="diff-label">Hard</span>
+          </div>
+        </div>
+        <div class="proj-card">
+          <div class="proj-number">10</div>
+          <div class="proj-title">Plant Disease Detection for Indian Agriculture</div>
+          <div class="proj-subtitle">Use CNN transfer learning to classify crop diseases — directly applicable to AgriTech companies like DeHaat, Ninjacart, AgriBazaar</div>
+          <div class="proj-body">
+            <div>
+              <div class="proj-section-label">What to Build</div>
+              <ul class="proj-list">
+                <li>Image classifier: healthy vs 10+ disease types in crops</li>
+                <li>Use transfer learning with EfficientNetB0 (pre-trained on ImageNet)</li>
+                <li>Data augmentation to handle limited training data</li>
+                <li>Grad-CAM visualization: where does the model "look"?</li>
+                <li>Streamlit web app: upload a plant image → get disease diagnosis</li>
+              </ul>
+            </div>
+            <div>
+              <div class="proj-section-label">Step-by-Step: How to Do It</div>
+              <div class="proj-steps-full">
+                <ol>
+                  <li>Download "PlantVillage" dataset from Kaggle (54k images)</li>
+                  <li>Organize into train/val/test folders using os and shutil</li>
+                  <li>Set up data generators with ImageDataGenerator (augmentation: flip, rotate, zoom)</li>
+                  <li>Load EfficientNetB0 with weights="imagenet", freeze base layers</li>
+                  <li>Add custom head: GlobalAveragePooling → Dense(256) → Dropout → Softmax</li>
+                  <li>Train on Kaggle GPU (free!) for 15–20 epochs</li>
+                  <li>Implement Grad-CAM using TF GradientTape</li>
+                  <li>Build Streamlit app: file uploader → model prediction → Grad-CAM overlay display</li>
+                  <li>Deploy on Hugging Face Spaces</li>
+                </ol>
+              </div>
+            </div>
+          </div>
+          <div class="proj-stack">
+            <span class="stack-chip">Python</span>
+            <span class="stack-chip">TensorFlow / Keras</span>
+            <span class="stack-chip">EfficientNet</span>
+            <span class="stack-chip">OpenCV</span>
+            <span class="stack-chip">Streamlit</span>
+            <span class="stack-chip">Grad-CAM</span>
+          </div>
+          <div class="proj-outcome"><strong>Live Demo:</strong> A deployed plant disease detection app. Grad-CAM adds explainability — shows the model is not a black box. Perfect for AgriTech, healthcare imaging, and any CV-focused roles in India.</div>
+        </div>
+      </div>
+
+      <!-- PROJECT 11 -->
+      <div class="proj-block">
+        <div class="proj-meta">
+          <div class="proj-phase-tag tag-p4">Phase 4 · Month 12</div>
+          <div class="proj-when">GenAI / LLM<br>Project</div>
+          <div class="proj-duration">⏱ 3 WEEKS</div>
+          <div class="proj-difficulty">
+            <div class="diff-dot diff-filled"></div>
+            <div class="diff-dot diff-filled"></div>
+            <div class="diff-dot diff-filled"></div>
+            <div class="diff-dot diff-filled"></div>
+            <div class="diff-dot diff-filled"></div>
+            <span class="diff-label">Advanced</span>
+          </div>
+        </div>
+        <div class="proj-card">
+          <div class="proj-number">11</div>
+          <div class="proj-title">RAG-Based Q&amp;A Bot on Indian Legal / Financial Documents</div>
+          <div class="proj-subtitle">Build a document Q&amp;A system using RAG — one of the hottest AI skills in India's enterprise market right now</div>
+          <div class="proj-body">
+            <div>
+              <div class="proj-section-label">What to Build</div>
+              <ul class="proj-list">
+                <li>Upload any PDF (Budget speech, SEBI circular, company annual report)</li>
+                <li>System answers questions from the document accurately</li>
+                <li>Cites the exact paragraph it used to answer</li>
+                <li>Handles multi-document search across 5+ PDFs</li>
+                <li>Clean Streamlit UI with chat history</li>
+              </ul>
+            </div>
+            <div>
+              <div class="proj-section-label">Step-by-Step: How to Do It</div>
+              <div class="proj-steps-full">
+                <ol>
+                  <li>Install: langchain, faiss-cpu, pypdf, openai or use free Groq API</li>
+                  <li>Load PDF using PyPDFLoader from LangChain</li>
+                  <li>Split text into chunks: RecursiveCharacterTextSplitter (chunk_size=500)</li>
+                  <li>Embed chunks using HuggingFace sentence-transformers (free)</li>
+                  <li>Store embeddings in FAISS vector database</li>
+                  <li>On user query: embed question → find top-5 similar chunks</li>
+                  <li>Pass chunks + question to LLM (Groq llama3 = free + fast)</li>
+                  <li>Display answer + source paragraph in Streamlit</li>
+                  <li>Add chat history using st.session_state</li>
+                </ol>
+              </div>
+            </div>
+          </div>
+          <div class="proj-stack">
+            <span class="stack-chip">Python</span>
+            <span class="stack-chip">LangChain</span>
+            <span class="stack-chip">FAISS</span>
+            <span class="stack-chip">HuggingFace Embeddings</span>
+            <span class="stack-chip">Groq API (Free)</span>
+            <span class="stack-chip">Streamlit</span>
+          </div>
+          <div class="proj-outcome"><strong>Live Demo:</strong> A fully working document chatbot. This project alone can get interview calls at Infosys, TCS GenAI divisions, Publicis Sapient, ThoughtWorks, and Indian fintech startups — Gen AI RAG is the #1 requested skill in Indian JDs right now.</div>
+        </div>
+      </div>
+
+      <!-- PROJECT 12 -->
+      <div class="proj-block">
+        <div class="proj-meta">
+          <div class="proj-phase-tag tag-p5">Phase 5 · Month 13</div>
+          <div class="proj-when">End-to-End<br>ML Pipeline</div>
+          <div class="proj-duration">⏱ 3–4 WEEKS</div>
+          <div class="proj-difficulty">
+            <div class="diff-dot diff-filled"></div>
+            <div class="diff-dot diff-filled"></div>
+            <div class="diff-dot diff-filled"></div>
+            <div class="diff-dot diff-filled"></div>
+            <div class="diff-dot diff-filled"></div>
+            <span class="diff-label">Advanced</span>
+          </div>
+        </div>
+        <div class="proj-card">
+          <div class="proj-number">12</div>
+          <div class="proj-title">End-to-End ML Project with CI/CD &amp; MLflow Tracking</div>
+          <div class="proj-subtitle">The project that separates a serious candidate from everyone else — full production-grade ML pipeline</div>
+          <div class="proj-body">
+            <div>
+              <div class="proj-section-label">What to Build</div>
+              <ul class="proj-list">
+                <li>Complete ML pipeline: ingest → clean → train → evaluate → serve</li>
+                <li>MLflow experiment tracking for every model run</li>
+                <li>FastAPI endpoint that serves predictions as REST API</li>
+                <li>Dockerized application (runs anywhere with one command)</li>
+                <li>GitHub Actions CI/CD: auto-retrain on new data push</li>
+              </ul>
+            </div>
+            <div>
+              <div class="proj-section-label">Step-by-Step: How to Do It</div>
+              <div class="proj-steps-full">
+                <ol>
+                  <li>Take any previous project (e.g. loan default) and restructure it as a Python package (src/ layout)</li>
+                  <li>Create modular scripts: data_ingestion.py, preprocessing.py, training.py, evaluation.py</li>
+                  <li>Wrap training with mlflow.start_run() — log params, metrics, model artifact</li>
+                  <li>Build FastAPI: POST /predict endpoint that loads saved model and returns prediction</li>
+                  <li>Write Dockerfile: FROM python:3.10, COPY, RUN pip install, CMD uvicorn</li>
+                  <li>Test Docker image locally: docker build + docker run</li>
+                  <li>Create .github/workflows/train.yml — triggers MLflow training on git push</li>
+                  <li>Write full README with architecture diagram and API documentation</li>
+                </ol>
+              </div>
+            </div>
+          </div>
+          <div class="proj-stack">
+            <span class="stack-chip">Python</span>
+            <span class="stack-chip">FastAPI</span>
+            <span class="stack-chip">MLflow</span>
+            <span class="stack-chip">Docker</span>
+            <span class="stack-chip">GitHub Actions</span>
+            <span class="stack-chip">Uvicorn</span>
+          </div>
+          <div class="proj-outcome"><strong>GitHub Output:</strong> A fully containerized ML application. Shows MLOps maturity that most fresher candidates don't have. Directly relevant for MLE (Machine Learning Engineer) roles at product companies — the highest-paid DS track in India.</div>
+        </div>
+      </div>
+
+      <!-- PROJECT 13 -->
+      <div class="proj-block">
+        <div class="proj-meta">
+          <div class="proj-phase-tag tag-p5">Phase 5 · Month 14</div>
+          <div class="proj-when">Business<br>Intelligence</div>
+          <div class="proj-duration">⏱ 2 WEEKS</div>
+          <div class="proj-difficulty">
+            <div class="diff-dot diff-filled"></div>
+            <div class="diff-dot diff-filled"></div>
+            <div class="diff-dot diff-filled"></div>
+            <div class="diff-dot diff-empty"></div>
+            <div class="diff-dot diff-empty"></div>
+            <span class="diff-label">Intermediate</span>
+          </div>
+        </div>
+        <div class="proj-card">
+          <div class="proj-number">13</div>
+          <div class="proj-title">Power BI / Tableau Dashboard — Indian Business Context</div>
+          <div class="proj-subtitle">Many Indian companies still use BI tools heavily — not knowing them is a dealbreaker for analyst roles</div>
+          <div class="proj-body">
+            <div>
+              <div class="proj-section-label">What to Build</div>
+              <ul class="proj-list">
+                <li>Executive-level dashboard: 1 page, 5–7 KPIs visible instantly</li>
+                <li>Drill-down by region (Indian states), time period, product category</li>
+                <li>DAX measures in Power BI: YoY growth, rolling 3-month average</li>
+                <li>Mobile-optimized layout</li>
+                <li>Publish to Power BI Service or Tableau Public (free)</li>
+              </ul>
+            </div>
+            <div>
+              <div class="proj-section-label">Step-by-Step: How to Do It</div>
+              <div class="proj-steps-full">
+                <ol>
+                  <li>Use Superstore India or any sales dataset with state-wise data</li>
+                  <li>Load data into Power BI Desktop (free download from Microsoft)</li>
+                  <li>Clean data in Power Query: remove blanks, fix date formats</li>
+                  <li>Create a Date table and establish model relationships</li>
+                  <li>Write DAX: Total Sales, Profit Margin %, MoM Growth %</li>
+                  <li>Design dashboard: KPI cards on top, trend line, India map, product bar chart</li>
+                  <li>Apply a consistent color theme (don't use default colors)</li>
+                  <li>Publish to Power BI Service → share public link</li>
+                  <li>Add the public dashboard link directly in LinkedIn and resume</li>
+                </ol>
+              </div>
+            </div>
+          </div>
+          <div class="proj-stack">
+            <span class="stack-chip">Power BI Desktop</span>
+            <span class="stack-chip">DAX</span>
+            <span class="stack-chip">Power Query (M)</span>
+            <span class="stack-chip">Power BI Service</span>
+          </div>
+          <div class="proj-outcome"><strong>Public Link:</strong> A live Power BI or Tableau dashboard with a shareable URL. Essential for Data Analyst roles — most Indian companies (Deloitte, EY, PwC, TCS iON, etc.) explicitly test Power BI in their hiring process.</div>
+        </div>
+      </div>
+
+      <!-- PROJECT 14 -->
+      <div class="proj-block">
+        <div class="proj-meta">
+          <div class="proj-phase-tag tag-p5">Phase 5 · Month 15</div>
+          <div class="proj-when">Capstone<br>Project</div>
+          <div class="proj-duration">⏱ 4–5 WEEKS</div>
+          <div class="proj-difficulty">
+            <div class="diff-dot diff-filled"></div>
+            <div class="diff-dot diff-filled"></div>
+            <div class="diff-dot diff-filled"></div>
+            <div class="diff-dot diff-filled"></div>
+            <div class="diff-dot diff-filled"></div>
+            <span class="diff-label">Advanced</span>
+          </div>
+        </div>
+        <div class="proj-card">
+          <div class="proj-number">14</div>
+          <div class="proj-title">Churn Prediction System for an Indian Telecom / OTT</div>
+          <div class="proj-subtitle">The ultimate capstone — a full product that combines ML, explainability, API, dashboard, and a business report</div>
+          <div class="proj-body">
+            <div>
+              <div class="proj-section-label">What to Build</div>
+              <ul class="proj-list">
+                <li>Predict which subscribers will cancel within next 30 days</li>
+                <li>SHAP explainability: why will this customer churn?</li>
+                <li>FastAPI backend serving predictions</li>
+                <li>Streamlit frontend with customer lookup and churn risk score</li>
+                <li>2-page business report (PDF) with findings and recommendations</li>
+                <li>Everything tracked in MLflow, containerized with Docker</li>
+              </ul>
+            </div>
+            <div>
+              <div class="proj-section-label">Step-by-Step: How to Do It</div>
+              <div class="proj-steps-full">
+                <ol>
+                  <li>Use "Telco Customer Churn" or "Jio/Airtel" inspired dataset from Kaggle</li>
+                  <li>Comprehensive EDA: churn rate by plan, usage, tenure, geography</li>
+                  <li>Feature engineering: usage trends, plan tier, support ticket frequency</li>
+                  <li>Train XGBoost model, tune with Optuna (50 trials)</li>
+                  <li>Generate SHAP summary and waterfall plots per prediction</li>
+                  <li>Build FastAPI: POST /predict/customer_id → returns churn probability + top 3 reasons</li>
+                  <li>Build Streamlit frontend calling the FastAPI backend</li>
+                  <li>Containerize both services with docker-compose</li>
+                  <li>Write a professional PDF report using Python-docx or ReportLab</li>
+                  <li>Record a 3-min Loom video walkthrough — share on LinkedIn</li>
+                </ol>
+              </div>
+            </div>
+          </div>
+          <div class="proj-stack">
+            <span class="stack-chip">Python</span>
+            <span class="stack-chip">XGBoost + Optuna</span>
+            <span class="stack-chip">SHAP</span>
+            <span class="stack-chip">FastAPI</span>
+            <span class="stack-chip">Streamlit</span>
+            <span class="stack-chip">Docker Compose</span>
+            <span class="stack-chip">MLflow</span>
+          </div>
+          <div class="proj-outcome"><strong>Portfolio Centerpiece:</strong> This is the project to lead every job application with. A Loom walkthrough video + live demo + GitHub repo + PDF report = a complete, professional package that very few fresher candidates in India can match.</div>
+        </div>
+      </div>
+
+      <!-- PROJECT 15 -->
+      <div class="proj-block">
+        <div class="proj-meta">
+          <div class="proj-phase-tag tag-p5">Phase 5 · Month 17–18</div>
+          <div class="proj-when">Open Source<br>Contribution</div>
+          <div class="proj-duration">⏱ ONGOING</div>
+          <div class="proj-difficulty">
+            <div class="diff-dot diff-filled"></div>
+            <div class="diff-dot diff-filled"></div>
+            <div class="diff-dot diff-filled"></div>
+            <div class="diff-dot diff-filled"></div>
+            <div class="diff-dot diff-empty"></div>
+            <span class="diff-label">Hard</span>
+          </div>
+        </div>
+        <div class="proj-card">
+          <div class="proj-number">15</div>
+          <div class="proj-title">First Open Source Pull Request to a DS/ML Library</div>
+          <div class="proj-subtitle">The rarest item on any fresher's resume in India — and the one that makes senior engineers want to hire immediately</div>
+          <div class="proj-body">
+            <div>
+              <div class="proj-section-label">What to Contribute</div>
+              <ul class="proj-list">
+                <li>Fix a documentation error or add a missing example</li>
+                <li>Add a missing test case to an existing function</li>
+                <li>Fix a "good first issue" labeled bug</li>
+                <li>Translate a notebook to a new dataset example</li>
+                <li>Improve a README with clearer setup instructions</li>
+              </ul>
+            </div>
+            <div>
+              <div class="proj-section-label">Step-by-Step: How to Do It</div>
+              <div class="proj-steps-full">
+                <ol>
+                  <li>Go to GitHub and search: "good first issue" + "data science" or "machine learning"</li>
+                  <li>Look at repos: scikit-learn, pandas, plotly, streamlit, evidently-ai</li>
+                  <li>Find an issue that matches current skill level — start with docs</li>
+                  <li>Fork the repository to personal GitHub account</li>
+                  <li>Clone locally, create a new branch: git checkout -b fix/issue-name</li>
+                  <li>Make changes, test thoroughly, follow the repo's contribution guide</li>
+                  <li>Open a Pull Request with a clear description of what was changed and why</li>
+                  <li>Respond promptly to reviewer comments and make requested changes</li>
+                  <li>Once merged — celebrate and mention it prominently in LinkedIn &amp; resume</li>
+                </ol>
+              </div>
+            </div>
+          </div>
+          <div class="proj-stack">
+            <span class="stack-chip">Git</span>
+            <span class="stack-chip">GitHub</span>
+            <span class="stack-chip">Any ML Library</span>
+            <span class="stack-chip">Pytest (for test PRs)</span>
+          </div>
+          <div class="proj-outcome"><strong>GitHub Profile:</strong> A merged PR in a recognized open-source project. This signals to any Indian hiring manager that there is genuine engineering maturity — not just course completion certificates. Even one merged PR is significant.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PRO TIPS -->
+<section class="tips-section">
+  <div class="container">
+    <div class="section-label">Inside Knowledge</div>
+    <div class="section-title">Critical Tips Specific<br>to the Indian Market</div>
+    <div class="tips-grid">
+      <div class="tip-card">
+        <div class="tip-num">TIP — 01</div>
+        <div class="tip-title">Start as a Data Analyst</div>
+        <div class="tip-text">Most people fail chasing "Data Scientist" titles immediately. Start as a Data Analyst (easier to get), gain 1–2 years of real business experience, then transition. The pay jump is worth it.</div>
+      </div>
+      <div class="tip-card">
+        <div class="tip-num">TIP — 02</div>
+        <div class="tip-title">Kaggle Rank Is a Resume</div>
+        <div class="tip-text">Indian recruiters, especially at product companies, respect Kaggle rankings. A Kaggle Expert or Master badge can unlock interviews at top companies without a traditional degree.</div>
+      </div>
+      <div class="tip-card">
+        <div class="tip-num">TIP — 03</div>
+        <div class="tip-title">Target Product Companies</div>
+        <div class="tip-text">Service companies (TCS, Infosys, Wipro) hire data scientists but offer lower salaries and less growth. Target Flipkart, Swiggy, Razorpay, PhonePe, CRED, Meesho, Zepto, and MNC R&D centers in India.</div>
+      </div>
+      <div class="tip-card">
+        <div class="tip-num">TIP — 04</div>
+        <div class="tip-title">Domain Knowledge Multiplies Value</div>
+        <div class="tip-text">A data scientist who understands finance, healthcare, or e-commerce deeply earns significantly more. Pick a domain, read industry reports, and become the person who bridges business and models.</div>
+      </div>
+      <div class="tip-card">
+        <div class="tip-num">TIP — 05</div>
+        <div class="tip-title">Build in Public</div>
+        <div class="tip-text">Post on LinkedIn about projects built, papers read, and problems solved. 3–4 posts per month showing genuine work creates inbound interest from recruiters. It compounds over time.</div>
+      </div>
+      <div class="tip-card">
+        <div class="tip-num">TIP — 06</div>
+        <div class="tip-title">Never Stop at Accuracy Metrics</div>
+        <div class="tip-text">Interviewers in India test business thinking. Always explain models in terms of business impact (revenue, churn reduction, fraud prevention). Pure technical answers impress fewer hiring managers than expected.</div>
+      </div>
+      <div class="tip-card">
+        <div class="tip-num">TIP — 07</div>
+        <div class="tip-title">The Free Path Is Enough</div>
+        <div class="tip-text">80% of the required learning can be done for free: Coursera (audit mode), YouTube (3Blue1Brown, StatQuest, Sentdex, Krish Naik), Kaggle, fast.ai, and GitHub. Paid bootcamps are not necessary if self-disciplined.</div>
+      </div>
+      <div class="tip-card">
+        <div class="tip-num">TIP — 08</div>
+        <div class="tip-title">Talk to Working Data Scientists</div>
+        <div class="tip-text">Join communities: Kaggle forums, DataHack by Analytics Vidhya, DAIR.AI Discord, LinkedIn groups, and local PyData meetups. Conversations with practitioners accelerate learning faster than any course.</div>
+      </div>
+      <div class="tip-card">
+        <div class="tip-num">TIP — 09</div>
+        <div class="tip-title">Projects Must Solve Real Problems</div>
+        <div class="tip-text">Avoid generic Titanic/Iris projects. Build projects around Indian context: IPL match prediction, real estate price prediction for a specific city, crop yield forecasting, or credit scoring for Indian banks.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>DATA SCIENCE CAREER ROADMAP — INDIA EDITION · 2024–2025 · CREATED FOR SELF-LEARNERS</p>
+  <p style="margin-top:8px;">Every expert was once a beginner who refused to quit.</p>
+</footer>
+
+</body>
+</html>
